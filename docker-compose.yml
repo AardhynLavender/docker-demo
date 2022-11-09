@@ -1,0 +1,17 @@
+version: "3.9"
+networks:
+  nginx:
+    driver: bridge
+services:
+  flaskapp:
+    build: ./flaskapp
+    networks:
+      - "nginx"
+    ports:
+      - "5000:5000"
+  proxyapp:
+    build: ./proxy
+    networks:
+      - "nginx"
+    ports:
+      - "8080:80"
